@@ -46,7 +46,7 @@ tinc:
       host_config: {{ host.get('host_config', {})|json }}
       RSAPublicKey: {{ host.get('RSAPublicKey')|json }}
 
-    {%- set short_name = grains['id'].split('.') | first %}
+    {%- set short_name = grains['id'].split('.') | first | replace("-", "") %}
 
     {%- if short_name == hostname %}
 /etc/tinc/{{ netname }}/tinc.conf:
